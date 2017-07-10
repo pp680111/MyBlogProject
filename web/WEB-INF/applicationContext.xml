@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close"
+          p:driverClass="com.mysql.jdbc.Driver"
+          p:jdbcUrl="jdbc:mysql://127.0.0.1:3306/myblog"
+          p:user="root"
+          p:password="dante123"
+          p:maxPoolSize="200"
+          p:minPoolSize="1"
+          p:initialPoolSize="3"
+          p:maxIdleTime="30"
+    />
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+          p:dataSource-ref="dataSource">
+        <property name="annotatedClasses">
+            <list>
+                <value>model.Article</value>
+                <value>model.Reply</value>
+                <value>model.Picture</value>
+                <value>model.MusicPlaylist</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+            </props>
+        </property>
+    </bean>
+
+
+    <bean id="articleDAO" class="DAOImpl.ArticleDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="pictureDAO" class="DAOImpl.PictureDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="musicPlaylistDAO" class="DAOImpl.MusicPlaylistDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+
+    <bean id="articleService" class="SerivceImpl.ArticleServiceImpl">
+        <property name="articleDAO" ref="articleDAO"/>
+    </bean>
+    <bean id="pictureService" class="SerivceImpl.PictureServiceImpl">
+        <property name="pictureDAO" ref="pictureDAO"/>
+    </bean>
+    <bean id="musicPlaylistService" class="SerivceImpl.MusicPlaylistServiceImpl">
+        <property name="musicPlaylistDAO" ref="musicPlaylistDAO"/>
+    </bean>
+
+
+
+    <bean id="visitorAction" class="Action.VisitorAction" scope="prototype">
+        <property name="articleService" ref="articleService"/>
+        <property name="pictureService" ref="pictureService"/>
+        <property name="musicPlaylistService" ref="musicPlaylistService"/>
+        <property name="pageSize" value="10"/>
+        <property name="picturePageSize" value="30"/>
+    </bean>
+
+    <bean id="adminAction" class="Action.AdminAction" scope="prototype">
+        <property name="articleService" ref="articleService"/>
+        <property name="pictureService" ref="pictureService"/>
+        <property name="musicPlaylistService" ref="musicPlaylistService"/>
+        <property name="pageSize" value="10"/>
+        <property name="picturePageSize" value="20"/>
+        <property name="playlistPageSize" value="10"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.ui.theme" value="simple"/>
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.multipart.maxSize" value="20971520"/>
+
+
+    <package name="visitor" namespace="/visitor" extends="json-default">
+        <action name="visitor-index" class="visitorAction" method="index">
+            <result name="success">/WEB-INF/content/visitor-index.jsp</result>
+        </action>
+
+        <action name="article-view" class="visitorAction" method="articleView">
+            <result name="success">/WEB-INF/content/article-view.jsp</result>
+        </action>
+
+        <action name="getArticles" class="visitorAction" method="getArticles">
+            <result type="json" name="success">
+                <param name="noCache">true</param>
+                <param name="contentType">text/html</param>
+                <param name="root">resultMap</param>
+            </result>
+        </action>
+
+        <action name="article-detail" class="visitorAction" method="getArticle">
+            <result name="success">/WEB-INF/content/article-view.jsp</result>
+        </action>
+
+        <action name="getRecommendArticleList" class="visitorAction" method="getRecommendArticles">
+            <result type="json" name="success">
+                <param name="noCache">true</param>
+                <param name="contentType">text/html</param>
+                <param name="root">resultMap</param>
+            </result>
+        </action>
+
+        <action name="getArticleTop" class="visitorAction" method="getArticleTop">
+            <result type="json" name="success">
+                <param name="noCache">true</param>
+                <param name="contentType">text/html</param>
+                <param name="root">resultMap</param>
+            </result>
+        </action>
+
+        <action name="music" class="visitorAction" method="musicPage">
+            <result>/WEB-INF/content/music.jsp</result>
+        </action>
+
+        <action name="picture-wall" class="visitorAction" method="pictureWall">
+            <result>/WEB-INF/content/picture-wall.jsp</result>
+        </action>
+
+        <action name="getPictures" class="visitorAction" method="getPictures">
+            <result type="json" name="success">
+                <param name="noCache">true</param>
+                <param name="contentType">text/html</param>
+                <param name="root">resultMap</param>
+            </result>
+        </action>
+    </package>
+
+    <package name="admin" namespace="/admin" extends="json-default">
+        <action name="admin-index" class="adminAction" method="index">
+            <result name="success">/WEB-INF/content/admin-index.jsp</result>
+        </action>
+
+        <action name="getArticles" class="adminAction" method="getArticles">
+            <result type="json" name="success">
+                <param name="noCache">true</param>
+                <param name="contentType">text/html</param>
+                <param name="root">resultMap</param>
+            </result>
+        </action>
+
+
+        <action name="new-article">
+            <result>/WEB-INF/content/new-article.jsp</result>
+        </action>
+
+        <action name="addArticle" class="adminAction" method="addArticle">
+            <result type="json" name="success">
+                <param name="noCache">true</param>
+                <param name="contentType">text/html</param>
+                <param name="root">resultMap</param>
+            </result>
+        </action>
+
+        <action name="article-detail" class="adminAction" method="getArticle">
+            <result name="success">/WEB-INF/content/article-view.jsp</result>
+        </action>
+
+        <action name="deleteArticle" class="adminAction" method="deleteArticle">
+            <result type="json" name="success">
+                <param name="noCache">true</param>
+                <param name="contentType">text/html</param>
+                <param name="root">resultMap</param>
+            </result>
+        </action>
+
+        <action name="modify-article" class="adminAction" method="getArticle">
+            <result name="success">/WEB-INF/content/modify-article.jsp</result>
+        </action>
+
+        <action name="submitModifiedArticle" class="adminAction" method="submitModifiedArticle">
+            <result type="json" name="success">
+                <param name="noCache">true</param>
+                <param name="contentType">text/html</param>
+                <param name="root">resultMap</param>
+            </result>
+        </action>
+
+        <action name="setArticleTop" class="adminAction" method="setArticleTop">
+            <result type="json" name="success">
+                <param name="noCache">true</param>
+                <param name="contentType">text/html</param>
+                <param name="root">resultMap</param>
+            </result>
+        </action>
+
+        <action name="getArticleTop" class="adminAction" method="getArticleTop">
+            <result type="json" name="success">
+                <param name="noCache">true</param>
+                <param name="contentType">text/html</param>
+                <param name="root">resultMap</param>
+            </result>
+        </action>
+
+        <action name="music" class="adminAction" method="musicPage">
+            <result>/WEB-INF/content/music.jsp</result>
+        </action>
+
+        <action name="getPlaylist" class="adminAction" method="getMusicPlaylist">
+            <result type="json" name="success">
+                <param name="noCache">true</param>
+                <param name="contentType">text/html</param>
+                <param name="root">resultMap</param>
+            </result>
+        </action>
+
+        <action name="addPlaylist" class="adminAction" method="addMusicPlaylist">
+            <result type="json" name="success">
+                <param name="noCache">true</param>
+                <param name="contentType">text/html</param>
+                <param name="root">resultMap</param>
+            </result>
+        </action>
+
+        <action name="deletePlaylist" class="adminAction" method="deleteMusicPlaylist">
+            <result type="json" name="success">
+                <param name="noCache">true</param>
+                <param name="contentType">text/html</param>
+                <param name="root">resultMap</param>
+            </result>
+        </action>
+
+        <action name="modifyPlaylist" class="adminAction" method="modifyMusicPlaylist">
+            <result type="json" name="success">
+                <param name="noCache">true</param>
+                <param name="contentType">text/html</param>
+                <param name="root">resultMap</param>
+            </result>
+        </action>
+
+        <action name="picture-wall" class="adminAction" method="pictureWall">
+            <result>/WEB-INF/content/picture-wall.jsp</result>
+        </action>
+
+        <action name="upload-picture">
+            <result>/WEB-INF/content/upload-picture.jsp</result>
+        </action>
+
+        <action name="getPictures" class="adminAction" method="getPictures">
+            <result type="json" name="success">
+                <param name="noCache">true</param>
+                <param name="contentType">text/html</param>
+                <param name="root">resultMap</param>
+            </result>
+        </action>
+
+        <action name="deletePicture" class="adminAction" method="deletePicture">
+            <result type="json" name="success">
+                <param name="noCache">true</param>
+                <param name="contentType">text/html</param>
+                <param name="root">resultMap</param>
+            </result>
+        </action>
+
+        <action name="admin-setup" class="adminAction" method="adminSetup">
+            <result>/WEB-INF/content/admin-setup.jsp</result>
+        </action>
+
+        <action name="uploadBackgroundPic" class="adminAction" method="setBackgroundPicture">
+            <result type="json" name="success">
+                <param name="noCache">true</param>
+                <param name="contentType">text/html</param>
+                <param name="root">resultMap</param>
+            </result>
+        </action>
+
+        <action name="uploadPicture" class="adminAction" method="uploadPicture">
+            <result type="json" name="success">
+                <param name="noCache">true</param>
+                <param name="contentType">text/html</param>
+                <param name="root">resultMap</param>
+            </result>
+        </action>
+    </package>
+</struts>

@@ -1,0 +1,134 @@
+a:link{
+    color: #000;
+}
+a:visited{
+    color: #000;
+}
+a:hover{
+    color: aqua;
+    text-decoration:none;
+}
+a:active{
+    color: aqua;
+    text-decoration:none;
+}
+.mainBody{
+    margin-top: 60px;
+}
+
+.navbarTab{
+    float: right;
+}
+
+.item{
+    margin-top:10px;
+    border-radius: 5px;
+    background-color: white;
+    padding: 10px 20px;
+    display: block;
+}
+
+.item > .dropdown{
+    float: right;
+}
+
+.itemLeft{
+    float:left;
+    width:65%;
+}
+
+.itemRight{
+    float: right;
+    width: 34%;
+}
+
+body{
+    background: url("/img/bg.jpg");
+    padding-bottom: 50px;
+}
+
+.articleTitle{
+    background: url("/img/titleBG.png") repeat-y -12px -0px;
+    display: inline-block;
+}
+.articleTitle > p{
+    margin-left:15px;
+    font-size: 20px;
+}
+
+.articleInfoBar{
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.articleInfoBar > span{
+    margin:0px 5px;
+}
+
+.editItem{
+    margin-bottom:10px;
+}
+
+.articleViewTitle > h2{
+    margin: 0 auto;
+}
+
+.articleViewTitle > div{
+    margin: 0 auto;
+}
+
+.recommendArticleItem{
+    background: url("/img/titleBG.png") repeat-y -12px -0px;
+}
+
+.recommendArticleItem > p{
+    margin-left:15px;
+}
+
+.playlist{
+    width: 200px;
+    padding: 10px;
+    display: inline-block;
+}
+
+.content{
+    width: 90%;
+    margin: 60px auto;
+    text-align: center;
+}
+.pictureFlowContainer{
+    white-space: nowrap;
+    display: inline-block;
+}
+.grid_col{
+    width: 300px;
+    display: inline-block;
+    float: left;
+    margin:0 10px;
+}
+.imgStyle{
+    width: 100%;
+    display: inline-block;
+}
+.pageTools{
+    margin:10px auto;
+    text-align: center;
+}
+.pageButton{
+    margin: 0 10px;
+    display: inline-block;
+}
+#addPlaylist{
+    margin-top: 10px;
+}
+.flowMenu{
+    display: block;
+    color: white;
+    width: 100%;
+    height: 20px;
+    position: relative;
+    bottom: 20px;
+    float: right;
+    background: #ababab90;
+    cursor:pointer;
+}
